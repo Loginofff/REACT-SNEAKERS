@@ -1,52 +1,28 @@
-function Drawer() {
+function Drawer({ onClose, items = [] }) {
   return (
-    <div style={{ display: "none" }} className="overlay">
+    <div className="overlay">
       <div className="drawer">
         <h2 className="mb-30 d-flex justify-between">
-          {" "}
-          Cart{" "}
-          <img className="removeBtn cu-p" src="/img/btn-remove.svg" alt="" />
+          Cart
+          <img onClick={onClose} className="removeBtn cu-p" src="/img/btn-remove.svg" alt="close" />
         </h2>
 
         <div className="items">
-          <div className="cartItem d-flex align-center">
+        {items.map((obj) => (
+          <div className="cartItem d-flex align-center mb-20">
             <div
-              style={{ backgroundImage: "url(/img/sneakers/1.png)" }}
+              style={{ backgroundImage: `url(${obj.imageUrl})` }}
               className="cartItemImg"
             ></div>
 
             <div className="mr-20">
-              <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-              <b>49.99 $</b>
+              <p className="mb-5">{obj.title}</p>
+              <b>{obj.price}</b>
             </div>
             <img className="removeBtn" src="/img/btn-remove.svg" alt="" />
           </div>
-
-          <div className="cartItem d-flex align-center">
-            <div
-              style={{ backgroundImage: "url(/img/sneakers/4.png)" }}
-              className="cartItemImg"
-            ></div>
-
-            <div className="mr-20">
-              <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-              <b>49.99 $</b>
-            </div>
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="" />
-          </div>
-
-          <div className="cartItem d-flex align-center">
-            <div
-              style={{ backgroundImage: "url(/img/sneakers/2.png)" }}
-              className="cartItemImg"
-            ></div>
-
-            <div className="mr-20">
-              <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-              <b>49.99 $</b>
-            </div>
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="" />
-          </div>
+        ))}
+      
         </div>
         <div className="totalBlock">
           <ul className="totalBlock">
